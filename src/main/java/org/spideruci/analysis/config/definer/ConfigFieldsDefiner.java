@@ -21,11 +21,8 @@ public class ConfigFieldsDefiner extends PrototypicalClassAdapter {
 
   private static ConfigClassScanner scanConfigurableClass(final String className, final File classFile) {
     final int writerFlags = ClassWriter.COMPUTE_MAXS;
-    ConfigClassScanner configClassScanner = 
-        new ConfigClassScanner(writerFlags, className);
-    ClassAdapterRunner configScanRunner = 
-        ClassAdapterRunner.create(configClassScanner, classFile);
-    
+    ConfigClassScanner configClassScanner = new ConfigClassScanner(writerFlags, className);
+    ClassAdapterRunner configScanRunner = ClassAdapterRunner.create(configClassScanner, classFile);
     configScanRunner.run();
     return configClassScanner;
   }
@@ -85,12 +82,7 @@ public class ConfigFieldsDefiner extends PrototypicalClassAdapter {
       checkConfig(className, config, configClassScanner);
       
       final int writerFlags = ClassWriter.COMPUTE_MAXS;
-      ConfigFieldsDefiner adapter = 
-          new ConfigFieldsDefiner(
-              writerFlags, 
-              className, 
-              configClassScanner, 
-              config);
+      ConfigFieldsDefiner adapter = new ConfigFieldsDefiner(writerFlags, className, configClassScanner, config);
       
       ClassAdapterRunner runner = ClassAdapterRunner.create(adapter, classFile);
       byte[] bytecode = runner.run();

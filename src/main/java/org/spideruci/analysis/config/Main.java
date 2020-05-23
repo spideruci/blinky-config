@@ -39,8 +39,7 @@ public class Main {
     Path configClassPath = getConfigClassPath(className);
     File configClassFile = configClassPath.toFile();
 
-    byte[] modBytecode = 
-        ConfigFieldsDefiner.define(className, configClassFile, config);
+    byte[] modBytecode = ConfigFieldsDefiner.define(className, configClassFile, config);
 
     writeToClassFile(modBytecode, configClassPath.toString());
   }
