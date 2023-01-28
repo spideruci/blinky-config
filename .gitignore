@@ -166,3 +166,5 @@ Blinky.ucls
 
 yaml-files/
 yamls/
+
+.vscode/settings.json
